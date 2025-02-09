@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}diabetes{% endblock title %}
+
+{% block body%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">DIABETES DIAGNOSIS BASED ON YOUR MEDICAL REPORTS</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+        <br><b>
+          
+          {% if output == "The person is diabetic. They may be prone to other diseases such as hypertension and cardiovascular diseases." %}
+          <h2 style="font-size: 25px; font-style: italic; color: red;">The person is predicted to be diagnosed diabetic</h2>
+          
+          
+<button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Click Here To Know Other Diseases Which you can be Prone to   <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+  </svg>
+  </button>
+  
+  <!-- Dropdown menu -->
+  <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cardiovascular Diseases</a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hypertension [High Blood Pressure]</a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kidney Disease [Diabetic Nephropathy]</a>
+        </li>
+        
+      </ul>
+  </div>
+  
+  
+          {% endif %}
+          {% if output == "The person is not diabetic" %}
+          <h2 style="font-size: 25px; font-style: italic; color: green;">NO DIABETES DETECTECTED</h2>
+          {% endif %}
+      
+      
+      </div>
+      <form method="POST" ,action="/diabetesprediction">
+        {%  csrf_token %} 
+        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="noofpregnancies" class="leading-7 text-sm text-gray-600">Enter the No. of Pregnancies</label>
+              <input type="number" id="pregnancies" name="pregnancies" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="glucoselevel" class="leading-7 text-sm text-gray-600">Enter the Glucose Level</label>
+              <input type="number" id="glucose" name="glucose" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="bloodpressure" class="leading-7 text-sm text-gray-600">Enter Blood-Pressure</label>
+              <input type="number" id="blood pressure" name="blood pressure" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="skin thickness" class="leading-7 text-sm text-gray-600">Enter Skin Thickness</label>
+              <input type="number" id="skin thickness" name="skin thickness" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="insulin" class="leading-7 text-sm text-gray-600">Enter Insulin Level</label>
+              <input type="number" id="insulin" name="insulin" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="bmi" class="leading-7 text-sm text-gray-600">Enter BMI</label>
+              <input type="number" id="bmi" name="bmi" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.01">
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="dpf" class="leading-7 text-sm text-gray-600">Diabetes Pedigree Function</label>
+              <input type="number" id="diabetespedigreefun" name="diabetespedigreefun" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.01">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="age" class="leading-7 text-sm text-gray-600">Enter Age</label>
+              <input type="number" id="age" name="age" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            
+           
+          </div>
+          <div class="text-center my-4"> <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button></div>
+      </form>
+    </div>
+  </section>
+
+
+
+{% endblock body%}

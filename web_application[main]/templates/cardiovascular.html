@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Cardiovascular{% endblock title %}
+
+{% block body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">CARDIOVASCULAR DISEASE DIAGNOSIS</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+        <br><b>
+          {% if output0 == "The Person is prone to a Heart Disease" %}
+          <h2 style="font-size: 25px; font-style: italic; color: red;">The Person is prone to a Heart Disease</h2>
+          
+          
+<button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Click Here To Know Other Diseases Which you can be Prone to   <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+  </svg>
+  </button>
+  
+  <!-- Dropdown menu -->
+  <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cardiovascular Diseases</a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hypertension [High Blood Pressure]</a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kidney Disease [Diabetic Nephropathy]</a>
+        </li>
+        
+      </ul>
+  </div>
+  
+  
+          {% endif %}
+          {% if output0 == "The Person is not prone to a Heart Disease" %}
+          <h2 style="font-size: 25px; font-style: italic; color: green;">The Person is not prone to a Heart Disease</h2>
+          {% endif %}
+      </div>
+      <form method="POST" ,action="/cardiovascular">
+        {%  csrf_token %} 
+        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="a1" class="leading-7 text-sm text-gray-600">Age</label>
+              <input type="number" id="a1" name="a1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="b1" class="leading-7 text-sm text-gray-600">Gender</label>
+              <input type="number" id="b1" name="b1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="c1" class="leading-7 text-sm text-gray-600">Chest Pain</label>
+              <input type="number" id="c1" name="c1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="d1" class="leading-7 text-sm text-gray-600">Resting Blood Pressure</label>
+              <input type="number" id="d1" name="d1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="e1" class="leading-7 text-sm text-gray-600">Serum Cholestrol</label>
+              <input type="number" id="e1" name="e1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="f1" class="leading-7 text-sm text-gray-600">Fasting Blood Sugar</label>
+              <input type="number" id="f1" name="f1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="g1" class="leading-7 text-sm text-gray-600">Resting Electro</label>
+              <input type="number" id="g1" name="g1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="h1" class="leading-7 text-sm text-gray-600">Max Heart Rate</label>
+              <input type="number" id="h1" name="h1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="i1" class="leading-7 text-sm text-gray-600">Exerciseangia</label>
+              <input type="number" id="i1" name="i1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="j1" class="leading-7 text-sm text-gray-600">Oldpeak</label>
+              <input type="number" id="j1" name="j1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.1">
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="k1" class="leading-7 text-sm text-gray-600">Slope</label>
+              <input type="number" id="k1" name="k1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="l1" class="leading-7 text-sm text-gray-600">CA</label>
+              <input type="number" id="l1" name="l1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="m1" class="leading-7 text-sm text-gray-600">THAL__no of vessels</label>
+              <input type="number" id="m1" name="m1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+        </div>
+        <div class="text-center my-4"> <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button></div>
+    </form>
+  </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Breastcancer{% endblock title %}
+
+{% block body%}
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">BREAST CANCER DIAGNOSIS USING DEEP LEARNING</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+        <br><b>
+            {% if output1 %}
+            <h2 style="font-size: 25px; font-style: italic; color: green;">{{output1}}</h2>
+            {% endif %}
+      </div>
+      <form method="POST" ,action="/breastcancer">
+        {%  csrf_token %} 
+        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="a" class="leading-7 text-sm text-gray-600">Mean Radius</label>
+              <input type="number" id="awer" name="awer" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.01">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="glucoselevel" class="leading-7 text-sm text-gray-600">Mean Texture</label>
+              <input type="number" id="b" name="b" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.01">
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="bloodpressure" class="leading-7 text-sm text-gray-600">Mean Smoothness</label>
+              <input type="number" id="c" name="c" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.00001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="skin thickness" class="leading-7 text-sm text-gray-600">Mean Compactness</label>
+              <input type="number" id="d" name="d" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.00001">
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="noofpregnancies" class="leading-7 text-sm text-gray-600">Mean Symmetry</label>
+              <input type="number" id="e" name="e" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.0001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="glucoselevel" class="leading-7 text-sm text-gray-600">Mean Fractal Dimension</label>
+              <input type="number" id="f" name="f" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.00001">
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="bloodpressure" class="leading-7 text-sm text-gray-600">Radius Error</label>
+              <input type="number" id="g" name="g" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.0001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="skin thickness" class="leading-7 text-sm text-gray-600">Texture Error</label>
+              <input type="number" id="h" name="h" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.0001">
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="noofpregnancies" class="leading-7 text-sm text-gray-600">Smoothness Error</label>
+              <input type="number" id="i" name="i" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.000001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="glucoselevel" class="leading-7 text-sm text-gray-600">Compactness Error</label>
+              <input type="number" id="j" name="j" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.000001">
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="bloodpressure" class="leading-7 text-sm text-gray-600">Concavity Error</label>
+              <input type="number" id="k" name="k" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.000001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="skin thickness" class="leading-7 text-sm text-gray-600">Concave Points Error</label>
+              <input type="number" id="l" name="l" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.000001">
+            </div>
+            
+           
+          </div>
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <label for="noofpregnancies" class="leading-7 text-sm text-gray-600">Symmetry Error</label>
+              <input type="number" id="m" name="m" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.00001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="glucoselevel" class="leading-7 text-sm text-gray-600">Fractal Dimension Error</label>
+              <input type="number" id="n" name="n" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.000001">
+            </div>
+            
+           
+          
+            <div class="relative flex-grow w-full">
+              <label for="bloodpressure" class="leading-7 text-sm text-gray-600">Worst Smoothness</label>
+              <input type="number" id="o" name="o" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.0001">
+            </div>
+            <div class="relative flex-grow w-full">
+              <label for="skin thickness" class="leading-7 text-sm text-gray-600">Worst Symmetry</label>
+              <input type="number" id="p" name="p" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.0001">
+            </div>
+            <div class="relative flex-grow w-full">
+                <label for="skin thickness" class="leading-7 text-sm text-gray-600">Worst Fractal Dimension
+
+                </label>
+                <input type="number" id="q" name="q" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" step="0.00001">
+              </div>
+            
+           
+          </div>
+          
+          <div class="text-center my-4"> <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button></div>
+      </form>
+    </div>
+  </section>
+
+
+
+{% endblock body%}
